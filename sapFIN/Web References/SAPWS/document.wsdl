@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <sidl:sidl xmlns:sidl="http://www.sap.com/2007/03/sidl" />
+  </wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="BN_ZFSS_F">
+    <wsp:ExactlyOne xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sapsp="http://www.sap.com/webas/630/soap/features/security/policy" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility">
+      <wsp:All>
+        <sp:TransportBinding>
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:TripleDesRsa15 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+    <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" wsp:Optional="true" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="IF_ZFSS_F">
+    <sapsession:Session xmlns:sapsession="http://www.sap.com/webas/630/soap/features/session/">
+      <sapsession:enableSession>false</sapsession:enableSession>
+    </sapsession:Session>
+    <wsp:ExactlyOne xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sapsp="http://www.sap.com/webas/630/soap/features/security/policy" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZFSS_SET_STATU">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZFSS_SET_MUSTERI">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZFSS_SET_MALZEME">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZFSS_SET_EQUIPMENT">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZFSS_SET_DISPATCH">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZFSS_SET_CONFIRMATION">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZFSS_GET_DISPATCH">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZFSS_GET_EQUIPMENT">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZFSS_SET_COMPONENT">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZFSS_GET_MALZEME">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZFSS_GET_MUSTERI">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="RfcException.Message.Number">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char12">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char132">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="132" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char18">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char2">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char20">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char200">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="200" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char22">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="22" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char30">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char35">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char40">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char6">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="6" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char60">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="60" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char8">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char9">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="9" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="date">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:pattern value="\d\d\d\d-\d\d-\d\d" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="decimal10.0">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="10" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric8">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="8" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="quantum13.3">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="13" />
+          <xsd:fractionDigits value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="quantum7.1">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="7" />
+          <xsd:fractionDigits value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="time">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="8" />
+          <xsd:pattern value="\d\d:\d\d:\d\d" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="unit3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ZFSS_S_DISPATCH">
+        <xsd:sequence>
+          <xsd:element name="KUNNR" type="tns:char10" />
+          <xsd:element name="PARNR" type="tns:char12" />
+          <xsd:element name="AUART" type="tns:char4" />
+          <xsd:element name="ZJOBTYPE" type="tns:char6" />
+          <xsd:element name="AUFK_ERDAT" type="tns:date" />
+          <xsd:element name="GSTRP" type="tns:date" />
+          <xsd:element name="ZCONTACT" type="tns:char12" />
+          <xsd:element name="ZCONTACT_NAME1" type="tns:char35" />
+          <xsd:element name="TEL_NUMBER" type="tns:char30" />
+          <xsd:element name="KTEXT" type="tns:char20" />
+          <xsd:element name="ZAUTOTEXT" type="tns:char20" />
+          <xsd:element name="AUFNR" type="tns:char12" />
+          <xsd:element name="AUFK_ERNAM" type="tns:char12" />
+          <xsd:element name="ERNAM_NAME_FIRST" type="tns:char40" />
+          <xsd:element name="ERNAM_NAME_LAST" type="tns:char40" />
+          <xsd:element name="VAPLZ" type="tns:char8" />
+          <xsd:element name="VAPLZ_KTEXT" type="tns:char40" />
+          <xsd:element name="ZINVOICE" type="tns:char1" />
+          <xsd:element name="QMNUM" type="tns:char12" />
+          <xsd:element name="ZFSE" type="tns:char12" />
+          <xsd:element name="ZFSE_VORNA" type="tns:char40" />
+          <xsd:element name="ZFSE_NACHN" type="tns:char40" />
+          <xsd:element name="NAME1" type="tns:char30" />
+          <xsd:element name="PRIOK" type="tns:char1" />
+          <xsd:element name="OBJNR" type="tns:char22" />
+          <xsd:element name="GLTRP" type="tns:date" />
+          <xsd:element name="EQUNR" type="tns:char18" />
+          <xsd:element name="STRAS" type="tns:char35" />
+          <xsd:element name="PSTLZ" type="tns:char10" />
+          <xsd:element name="ORT01" type="tns:char35" />
+          <xsd:element name="AUSVN" type="tns:date" />
+          <xsd:element name="AUSBS" type="tns:date" />
+          <xsd:element name="ZFSSUST" type="tns:char20" />
+          <xsd:element name="CHANGE_IND" type="tns:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_S_DISPATCH_EQUIPMENT">
+        <xsd:sequence>
+          <xsd:element name="AUFNR" type="tns:char12" />
+          <xsd:element name="EQUNR" type="tns:char18" />
+          <xsd:element name="EQKTX" type="tns:char40" />
+          <xsd:element name="PARNR" type="tns:char12" />
+          <xsd:element name="NAME1" type="tns:char35" />
+          <xsd:element name="SERNR" type="tns:char18" />
+          <xsd:element name="MATNR" type="tns:char18" />
+          <xsd:element name="DRTBAS" type="tns:char10" />
+          <xsd:element name="DRTBTS" type="tns:char10" />
+          <xsd:element name="ZZVBELN" type="tns:char10" />
+          <xsd:element name="ZZVNDAT" type="tns:date" />
+          <xsd:element name="ZZLASTDATE" type="tns:date" />
+          <xsd:element name="ZZEXTWG" type="tns:char18" />
+          <xsd:element name="ZZDEVID" type="tns:char20" />
+          <xsd:element name="ZZPMSID" type="tns:char20" />
+          <xsd:element name="OBJNR" type="tns:char22" />
+          <xsd:element name="ATINN" type="tns:numeric10" />
+          <xsd:element name="ZZSWVER" type="tns:char20" />
+          <xsd:element name="Y2TEKNIK" type="tns:char12" />
+          <xsd:element name="ZZLOCAT" type="tns:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_S_DISPATCH_TEXT">
+        <xsd:sequence>
+          <xsd:element name="AUFNR" type="tns:char12" />
+          <xsd:element name="DTTYP" type="tns:char1" />
+          <xsd:element name="TLINE" type="tns:char132" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_S_DISPATCH_Z7">
+        <xsd:sequence>
+          <xsd:element name="AUFNR" type="tns:char12" />
+          <xsd:element name="PARNR" type="tns:char12" />
+          <xsd:element name="VORNA" type="tns:char40" />
+          <xsd:element name="NACHN" type="tns:char40" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_S_EQUIPMENT">
+        <xsd:sequence>
+          <xsd:element name="EQUNR" type="tns:char18" />
+          <xsd:element name="EQKTX" type="tns:char40" />
+          <xsd:element name="PARNR" type="tns:char12" />
+          <xsd:element name="NAME1" type="tns:char35" />
+          <xsd:element name="SERNR" type="tns:char18" />
+          <xsd:element name="MATNR" type="tns:char18" />
+          <xsd:element name="DRTBAS" type="tns:char10" />
+          <xsd:element name="DRTBTS" type="tns:char10" />
+          <xsd:element name="ZZVBELN" type="tns:char10" />
+          <xsd:element name="ZZVNDAT" type="tns:date" />
+          <xsd:element name="ZZLASTDATE" type="tns:date" />
+          <xsd:element name="ZZEXTWG" type="tns:char18" />
+          <xsd:element name="ZZDEVID" type="tns:char20" />
+          <xsd:element name="ZZPMSID" type="tns:char20" />
+          <xsd:element name="OBJNR" type="tns:char22" />
+          <xsd:element name="ATINN" type="tns:numeric10" />
+          <xsd:element name="ZZSWVER" type="tns:char20" />
+          <xsd:element name="Y2TEKNIK" type="tns:char12" />
+          <xsd:element name="ZZLOCAT" type="tns:char30" />
+          <xsd:element name="CHANGE_IND" type="tns:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_S_MALZEME">
+        <xsd:sequence>
+          <xsd:element name="MATNR" type="tns:char18" />
+          <xsd:element name="MAKTX" type="tns:char40" />
+          <xsd:element name="MEINS" type="tns:unit3" />
+          <xsd:element name="BISMT" type="tns:char18" />
+          <xsd:element name="MATKL" type="tns:char9" />
+          <xsd:element name="XCHPF" type="tns:char1" />
+          <xsd:element name="CHANGE_IND" type="tns:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_S_MUSTERI">
+        <xsd:sequence>
+          <xsd:element name="KUNNR" type="tns:char10" />
+          <xsd:element name="NAME1" type="tns:char35" />
+          <xsd:element name="LAND1" type="tns:char3" />
+          <xsd:element name="STRAS" type="tns:char60" />
+          <xsd:element name="REGIO" type="tns:char3" />
+          <xsd:element name="BEZEI" type="tns:char20" />
+          <xsd:element name="PSTLZ" type="tns:char10" />
+          <xsd:element name="VKBUR" type="tns:char4" />
+          <xsd:element name="VKBEZ" type="tns:char20" />
+          <xsd:element name="BRSCH" type="tns:char4" />
+          <xsd:element name="BRTXT" type="tns:char20" />
+          <xsd:element name="ORT01" type="tns:char35" />
+          <xsd:element name="PERNR_Y2" type="tns:numeric8" />
+          <xsd:element name="VORNA_Y2" type="tns:char40" />
+          <xsd:element name="NACHN_Y2" type="tns:char40" />
+          <xsd:element name="CHANGE_IND" type="tns:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_S_COMPONENT">
+        <xsd:sequence>
+          <xsd:element name="MATNR" type="tns:char18" />
+          <xsd:element name="BDMNG" type="tns:quantum13.3" />
+          <xsd:element name="MEINS" type="tns:unit3" />
+          <xsd:element name="ZZACCNT" type="tns:char2" />
+          <xsd:element name="ZZSERNE" type="tns:char10" />
+          <xsd:element name="ZZSEROL" type="tns:char10" />
+          <xsd:element name="POTX1" type="tns:char40" />
+          <xsd:element name="ZZVANLO" type="tns:numeric8" />
+          <xsd:element name="LUNID" type="tns:char200" />
+          <xsd:element name="AUFNR" type="tns:char12" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_S_CONFIRMATION">
+        <xsd:sequence>
+          <xsd:element name="BUDAT" type="tns:date" />
+          <xsd:element name="ARBPL" type="tns:char8" />
+          <xsd:element name="PERNR" type="tns:numeric8" />
+          <xsd:element name="ISMNW_WORK" type="tns:quantum7.1" />
+          <xsd:element name="ISMNE_WORK" type="tns:unit3" />
+          <xsd:element name="ISDZ_WORK" type="tns:time" />
+          <xsd:element name="IEDZ_WORK" type="tns:time" />
+          <xsd:element name="ISMNW_WAIT" type="tns:quantum7.1" />
+          <xsd:element name="ISMNE_WAIT" type="tns:unit3" />
+          <xsd:element name="ISDZ_WAIT" type="tns:time" />
+          <xsd:element name="IEDZ_WAIT" type="tns:time" />
+          <xsd:element name="LTXA1" type="tns:char40" />
+          <xsd:element name="ISMNW_TRAV" type="tns:quantum7.1" />
+          <xsd:element name="ISMNE_TRAV" type="tns:unit3" />
+          <xsd:element name="ZZDIST" type="tns:decimal10.0" />
+          <xsd:element name="LUNID" type="tns:char200" />
+          <xsd:element name="AUFNR" type="tns:char12" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_S_DISPATCH_FLD">
+        <xsd:sequence>
+          <xsd:element name="KUNNR" type="tns:char10" />
+          <xsd:element name="PARNR" type="tns:char12" />
+          <xsd:element name="AUART" type="tns:char4" />
+          <xsd:element name="ZJOBTYPE" type="tns:char6" />
+          <xsd:element name="AUFK_ERDAT" type="tns:date" />
+          <xsd:element name="GSTRP" type="tns:date" />
+          <xsd:element name="ZCONTACT" type="tns:char12" />
+          <xsd:element name="ZCONTACT_NAME1" type="tns:char35" />
+          <xsd:element name="TEL_NUMBER" type="tns:char30" />
+          <xsd:element name="KTEXT" type="tns:char20" />
+          <xsd:element name="ZAUTOTEXT" type="tns:char20" />
+          <xsd:element name="AUFNR" type="tns:char12" />
+          <xsd:element name="AUFK_ERNAM" type="tns:char12" />
+          <xsd:element name="ERNAM_NAME_FIRST" type="tns:char40" />
+          <xsd:element name="ERNAM_NAME_LAST" type="tns:char40" />
+          <xsd:element name="VAPLZ" type="tns:char8" />
+          <xsd:element name="VAPLZ_KTEXT" type="tns:char40" />
+          <xsd:element name="ZINVOICE" type="tns:char1" />
+          <xsd:element name="QMNUM" type="tns:char12" />
+          <xsd:element name="ZFSE" type="tns:char12" />
+          <xsd:element name="ZFSE_VORNA" type="tns:char40" />
+          <xsd:element name="ZFSE_NACHN" type="tns:char40" />
+          <xsd:element name="NAME1" type="tns:char30" />
+          <xsd:element name="PRIOK" type="tns:char1" />
+          <xsd:element name="OBJNR" type="tns:char22" />
+          <xsd:element name="GLTRP" type="tns:date" />
+          <xsd:element name="EQUNR" type="tns:char18" />
+          <xsd:element name="STRAS" type="tns:char35" />
+          <xsd:element name="PSTLZ" type="tns:char10" />
+          <xsd:element name="ORT01" type="tns:char35" />
+          <xsd:element name="AUSVN" type="tns:date" />
+          <xsd:element name="AUSBS" type="tns:date" />
+          <xsd:element name="ZFSSUST" type="tns:char20" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_S_EQUIPMENT_IMPORT">
+        <xsd:sequence>
+          <xsd:element name="EQUNR" type="tns:char18" />
+          <xsd:element name="ZZPMSID" type="tns:char20" />
+          <xsd:element name="ZZLOCAT" type="tns:char30" />
+          <xsd:element name="ZZSWVER" type="tns:char20" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_S_MATNR_IMPORT">
+        <xsd:sequence>
+          <xsd:element name="MATNR" type="tns:char18" />
+          <xsd:element name="ZZPMSID" type="tns:char20" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RfcException.Message">
+        <xsd:sequence>
+          <xsd:element name="ID" type="xsd:string" />
+          <xsd:element name="Number" type="tns:RfcException.Message.Number" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_GET_DISPATCH.RfcException">
+        <xsd:sequence>
+          <xsd:element name="Name" type="tns:ZFSS_GET_DISPATCH.RfcExceptions" />
+          <xsd:element minOccurs="0" name="Text" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Message" type="tns:RfcException.Message" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_GET_EQUIPMENT.RfcException">
+        <xsd:sequence>
+          <xsd:element name="Name" type="tns:ZFSS_GET_EQUIPMENT.RfcExceptions" />
+          <xsd:element minOccurs="0" name="Text" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Message" type="tns:RfcException.Message" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_GET_MALZEME.RfcException">
+        <xsd:sequence>
+          <xsd:element name="Name" type="tns:ZFSS_GET_MALZEME.RfcExceptions" />
+          <xsd:element minOccurs="0" name="Text" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Message" type="tns:RfcException.Message" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_GET_MUSTERI.RfcException">
+        <xsd:sequence>
+          <xsd:element name="Name" type="tns:ZFSS_GET_MUSTERI.RfcExceptions" />
+          <xsd:element minOccurs="0" name="Text" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Message" type="tns:RfcException.Message" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_T_DISPATCH">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFSS_S_DISPATCH" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_T_DISPATCH_EQUIPMENT">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFSS_S_DISPATCH_EQUIPMENT" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_T_DISPATCH_TEXT">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFSS_S_DISPATCH_TEXT" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_T_DISPATCH_Z7">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFSS_S_DISPATCH_Z7" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_T_EQUIPMENT">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFSS_S_EQUIPMENT" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_T_MALZEME">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFSS_S_MALZEME" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_T_MUSTERI">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFSS_S_MUSTERI" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_T_COMPONENT">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFSS_S_COMPONENT" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_T_CONFIRMATION">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFSS_S_CONFIRMATION" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_T_DISPATCH_FLD">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFSS_S_DISPATCH_FLD" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_T_EQUIPMENT_IMPORT">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFSS_S_EQUIPMENT_IMPORT" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZFSS_T_MATNR_IMPORT">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZFSS_S_MATNR_IMPORT" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ZFSS_GET_DISPATCH.RfcExceptions">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="INITIALIZATION_ERROR" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ZFSS_GET_EQUIPMENT.RfcExceptions">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="INITIALIZATION_ERROR" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ZFSS_GET_MALZEME.RfcExceptions">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="INITIALIZATION_ERROR" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ZFSS_GET_MUSTERI.RfcExceptions">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="INITIALIZATION_ERROR" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="ZFSS_GET_DISPATCH.Exception" type="tns:ZFSS_GET_DISPATCH.RfcException" />
+      <xsd:element name="ZFSS_GET_EQUIPMENT.Exception" type="tns:ZFSS_GET_EQUIPMENT.RfcException" />
+      <xsd:element name="ZFSS_GET_MALZEME.Exception" type="tns:ZFSS_GET_MALZEME.RfcException" />
+      <xsd:element name="ZFSS_GET_MUSTERI.Exception" type="tns:ZFSS_GET_MUSTERI.RfcException" />
+      <xsd:element name="ZFSS_GET_DISPATCH">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_GET_DISPATCHResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="E_DISPATCH" type="tns:ZFSS_T_DISPATCH" />
+            <xsd:element name="E_EQUIPMENT" type="tns:ZFSS_T_DISPATCH_EQUIPMENT" />
+            <xsd:element name="E_REQID" type="tns:numeric10" />
+            <xsd:element name="E_TEXT" type="tns:ZFSS_T_DISPATCH_TEXT" />
+            <xsd:element name="E_Z7" type="tns:ZFSS_T_DISPATCH_Z7" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_GET_EQUIPMENT">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_GET_EQUIPMENTResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="E_EQUIPMENT" type="tns:ZFSS_T_EQUIPMENT" />
+            <xsd:element name="E_REQID" type="tns:numeric10" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_GET_MALZEME">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_GET_MALZEMEResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="E_MALZEME" type="tns:ZFSS_T_MALZEME" />
+            <xsd:element name="E_REQID" type="tns:numeric10" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_GET_MUSTERI">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_GET_MUSTERIResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="E_MUSTERI" type="tns:ZFSS_T_MUSTERI" />
+            <xsd:element name="E_REQID" type="tns:numeric10" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_COMPONENT">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="I_COMPONENT" type="tns:ZFSS_T_COMPONENT" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_COMPONENTResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_CONFIRMATION">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="I_CONFIRMATION" type="tns:ZFSS_T_CONFIRMATION" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_CONFIRMATIONResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_DISPATCH">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="I_DISPATCH" type="tns:ZFSS_T_DISPATCH_FLD" />
+            <xsd:element minOccurs="0" name="I_TEXT" type="tns:ZFSS_T_DISPATCH_TEXT" />
+            <xsd:element minOccurs="0" name="I_Z7" type="tns:ZFSS_T_DISPATCH_Z7" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_DISPATCHResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_EQUIPMENT">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="I_EQUIPMENT" type="tns:ZFSS_T_EQUIPMENT_IMPORT" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_EQUIPMENTResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_MALZEME">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="I_MALZEME" type="tns:ZFSS_T_MATNR_IMPORT" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_MALZEMEResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_MUSTERI">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="I_MUSTERI" type="tns:ZFSS_T_MUSTERI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_MUSTERIResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_STATU">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="I_REQID" type="tns:numeric10" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZFSS_SET_STATUResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ZFSS_GET_DISPATCH">
+    <wsdl:part name="parameters" element="tns:ZFSS_GET_DISPATCH" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_GET_DISPATCHResponse">
+    <wsdl:part name="parameter" element="tns:ZFSS_GET_DISPATCHResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_GET_EQUIPMENT">
+    <wsdl:part name="parameters" element="tns:ZFSS_GET_EQUIPMENT" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_GET_EQUIPMENTResponse">
+    <wsdl:part name="parameter" element="tns:ZFSS_GET_EQUIPMENTResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_GET_MALZEME">
+    <wsdl:part name="parameters" element="tns:ZFSS_GET_MALZEME" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_GET_MALZEMEResponse">
+    <wsdl:part name="parameter" element="tns:ZFSS_GET_MALZEMEResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_GET_MUSTERI">
+    <wsdl:part name="parameters" element="tns:ZFSS_GET_MUSTERI" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_GET_MUSTERIResponse">
+    <wsdl:part name="parameter" element="tns:ZFSS_GET_MUSTERIResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_COMPONENT">
+    <wsdl:part name="parameters" element="tns:ZFSS_SET_COMPONENT" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_COMPONENTResponse">
+    <wsdl:part name="parameter" element="tns:ZFSS_SET_COMPONENTResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_CONFIRMATION">
+    <wsdl:part name="parameters" element="tns:ZFSS_SET_CONFIRMATION" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_CONFIRMATIONResponse">
+    <wsdl:part name="parameter" element="tns:ZFSS_SET_CONFIRMATIONResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_DISPATCH">
+    <wsdl:part name="parameters" element="tns:ZFSS_SET_DISPATCH" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_DISPATCHResponse">
+    <wsdl:part name="parameter" element="tns:ZFSS_SET_DISPATCHResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_EQUIPMENT">
+    <wsdl:part name="parameters" element="tns:ZFSS_SET_EQUIPMENT" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_EQUIPMENTResponse">
+    <wsdl:part name="parameter" element="tns:ZFSS_SET_EQUIPMENTResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_MALZEME">
+    <wsdl:part name="parameters" element="tns:ZFSS_SET_MALZEME" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_MALZEMEResponse">
+    <wsdl:part name="parameter" element="tns:ZFSS_SET_MALZEMEResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_MUSTERI">
+    <wsdl:part name="parameters" element="tns:ZFSS_SET_MUSTERI" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_MUSTERIResponse">
+    <wsdl:part name="parameter" element="tns:ZFSS_SET_MUSTERIResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_STATU">
+    <wsdl:part name="parameters" element="tns:ZFSS_SET_STATU" />
+  </wsdl:message>
+  <wsdl:message name="ZFSS_SET_STATUResponse">
+    <wsdl:part name="parameter" element="tns:ZFSS_SET_STATUResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ZFSS_F">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#IF_ZFSS_F" />
+    </wsp:Policy>
+    <wsdl:operation name="ZFSS_GET_DISPATCH">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZFSS_GET_DISPATCH" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZFSS_GET_DISPATCH" />
+      <wsdl:output message="tns:ZFSS_GET_DISPATCHResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_GET_EQUIPMENT">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZFSS_GET_EQUIPMENT" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZFSS_GET_EQUIPMENT" />
+      <wsdl:output message="tns:ZFSS_GET_EQUIPMENTResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_GET_MALZEME">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZFSS_GET_MALZEME" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZFSS_GET_MALZEME" />
+      <wsdl:output message="tns:ZFSS_GET_MALZEMEResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_GET_MUSTERI">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZFSS_GET_MUSTERI" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZFSS_GET_MUSTERI" />
+      <wsdl:output message="tns:ZFSS_GET_MUSTERIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_COMPONENT">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZFSS_SET_COMPONENT" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZFSS_SET_COMPONENT" />
+      <wsdl:output message="tns:ZFSS_SET_COMPONENTResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_CONFIRMATION">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZFSS_SET_CONFIRMATION" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZFSS_SET_CONFIRMATION" />
+      <wsdl:output message="tns:ZFSS_SET_CONFIRMATIONResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_DISPATCH">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZFSS_SET_DISPATCH" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZFSS_SET_DISPATCH" />
+      <wsdl:output message="tns:ZFSS_SET_DISPATCHResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_EQUIPMENT">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZFSS_SET_EQUIPMENT" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZFSS_SET_EQUIPMENT" />
+      <wsdl:output message="tns:ZFSS_SET_EQUIPMENTResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_MALZEME">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZFSS_SET_MALZEME" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZFSS_SET_MALZEME" />
+      <wsdl:output message="tns:ZFSS_SET_MALZEMEResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_MUSTERI">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZFSS_SET_MUSTERI" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZFSS_SET_MUSTERI" />
+      <wsdl:output message="tns:ZFSS_SET_MUSTERIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_STATU">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZFSS_SET_STATU" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZFSS_SET_STATU" />
+      <wsdl:output message="tns:ZFSS_SET_STATUResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ZFSS_F" type="tns:ZFSS_F">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#BN_ZFSS_F" />
+    </wsp:Policy>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ZFSS_GET_DISPATCH">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_GET_EQUIPMENT">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_GET_MALZEME">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_GET_MUSTERI">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_COMPONENT">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_CONFIRMATION">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_DISPATCH">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_EQUIPMENT">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_MALZEME">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_MUSTERI">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZFSS_SET_STATU">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="service">
+    <wsdl:port name="ZFSS_F" binding="tns:ZFSS_F">
+      <soap:address location="http://host-sap:8000/sap/bc/srt/rfc/sap/zfss_f/500/zfss_f/zfss_f" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,38 @@
+C:\Documents and Settings\abit\Belgelerim\Visual Studio 2005\Projects\sapFIN\sapFIN\bin\Debug\sapFIN.exe
+C:\Documents and Settings\abit\Belgelerim\Visual Studio 2005\Projects\sapFIN\sapFIN\bin\Debug\sapFIN.pdb
+C:\Documents and Settings\abit\Belgelerim\Visual Studio 2005\Projects\sapFIN\sapFIN\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\abit\Belgelerim\Visual Studio 2005\Projects\sapFIN\sapFIN\obj\Debug\sapFIN.exe
+C:\Documents and Settings\abit\Belgelerim\Visual Studio 2005\Projects\sapFIN\sapFIN\obj\Debug\sapFIN.pdb
+C:\Documents and Settings\abit\Belgelerim\Visual Studio 2005\Projects\sapFIN\sapFIN\bin\Debug\sapFIN.exe.config
+C:\Documents and Settings\abit\Belgelerim\Visual Studio 2005\Projects\sapFIN\sapFIN\obj\Debug\Interop.Domino.dll
+C:\Documents and Settings\abit\Belgelerim\Visual Studio 2005\Projects\sapFIN\sapFIN\obj\Debug\sapFIN.csproj.ResolveComReference.cache
+C:\Documents and Settings\abit\Belgelerim\Visual Studio 2005\Projects\sapFIN\sapFIN\bin\Debug\Interop.Domino.dll
+D:\Draeger\sapFIN\sapFIN\bin\Debug\sapFIN.exe.config
+D:\Draeger\sapFIN\sapFIN\obj\Debug\sapFIN.exe
+D:\Draeger\sapFIN\sapFIN\obj\Debug\sapFIN.pdb
+D:\Draeger\sapFIN\sapFIN\bin\Debug\sapFIN.exe
+D:\Draeger\sapFIN\sapFIN\bin\Debug\sapFIN.pdb
+D:\Draeger\sapFIN\sapFIN\bin\Debug\Interop.Domino.dll
+D:\Draeger\sapFIN\sapFIN\obj\Debug\ResolveAssemblyReference.cache
+D:\Draeger\sapFIN\sapFIN\obj\Debug\Interop.Domino.dll
+D:\Draeger\sapFIN\sapFIN\obj\Debug\sapFIN.csproj.ResolveComReference.cache
+D:\Development\Draeger\sapFIN\sapFIN\bin\Debug\sapFIN.exe.config
+D:\Development\Draeger\sapFIN\sapFIN\obj\Debug\sapFIN.exe
+D:\Development\Draeger\sapFIN\sapFIN\obj\Debug\sapFIN.pdb
+D:\Development\Draeger\sapFIN\sapFIN\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\Draeger\sapFIN\sapFIN\obj\Debug\Interop.Domino.dll
+D:\Development\Draeger\sapFIN\sapFIN\obj\Debug\sapFIN.csproj.ResolveComReference.cache
+D:\Development\Draeger\sapFIN\sapFIN\bin\Debug\sapFIN.exe
+D:\Development\Draeger\sapFIN\sapFIN\bin\Debug\sapFIN.pdb
+D:\Development\Draeger\sapFIN\sapFIN\bin\Debug\Interop.Domino.dll
+D:\Development\Draeger\sapFIN\sapFIN\bin\Release\sapFIN.exe.config
+D:\Development\Draeger\sapFIN\sapFIN\bin\Release\sapFIN.exe
+D:\Development\Draeger\sapFIN\sapFIN\bin\Release\sapFIN.XmlSerializers.dll
+D:\Development\Draeger\sapFIN\sapFIN\bin\Release\sapFIN.pdb
+D:\Development\Draeger\sapFIN\sapFIN\bin\Release\Interop.Domino.dll
+D:\Development\Draeger\sapFIN\sapFIN\obj\Release\ResolveAssemblyReference.cache
+D:\Development\Draeger\sapFIN\sapFIN\obj\Release\Interop.Domino.dll
+D:\Development\Draeger\sapFIN\sapFIN\obj\Release\sapFIN.csproj.ResolveComReference.cache
+D:\Development\Draeger\sapFIN\sapFIN\obj\Release\sapFIN.exe
+D:\Development\Draeger\sapFIN\sapFIN\obj\Release\sapFIN.pdb
+D:\Development\Draeger\sapFIN\sapFIN\obj\Release\sapFIN.XmlSerializers.dll

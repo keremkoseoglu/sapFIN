@@ -1,0 +1,9 @@
+bin\Debug\sapFIN.exe.config
+obj\Debug\sapFIN.exe
+obj\Debug\sapFIN.pdb
+bin\Debug\sapFIN.exe
+bin\Debug\sapFIN.pdb
+bin\Debug\Interop.Domino.dll
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Interop.Domino.dll
+obj\Debug\sapFIN.csproj.ResolveComReference.cache
